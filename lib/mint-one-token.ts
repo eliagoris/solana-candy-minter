@@ -121,7 +121,7 @@ const getMasterEdition = async (
 export const mintOneToken = async (
   wallet: WalletContextState
 ): Promise<string> => {
-  const ENV = "devnet"
+  const ENV = process.env.NEXT_PUBLIC_CONNECTION_NETWORK
   const solConnection = new web3.Connection(`https://api.${ENV}.solana.com/`)
 
   // const solPriceStr = program.getOptionValue('price') || '1';

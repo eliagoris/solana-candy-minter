@@ -33,12 +33,24 @@ const MintButton = (props: Props) => {
       </Flex>
       <Flex sx={{ flexDirection: "column" }}>
         <p>
-          Candy machine address: {process.env.NEXT_PUBLIC_CANDY_MACHINE_ADDRESS}
+          Candy machine address:{" "}
+          <small>{process.env.NEXT_PUBLIC_CANDY_MACHINE_ADDRESS}</small>
         </p>
         {wallet.publicKey ? (
-          <p>Wallet address: {wallet.publicKey.toString()}</p>
+          <p>
+            Wallet address: <small>{wallet.publicKey.toString()}</small>
+          </p>
         ) : null}
-        Go live date: {goLiveDate.toLocaleString()}
+        <p>
+          Network:{" "}
+          <small>
+            {process.env.NEXT_PUBLIC_CONNECTION_NETWORK}&nbsp;
+            {`https://api.${process.env.NEXT_PUBLIC_CONNECTION_NETWORK}.solana.com/`}
+          </small>
+        </p>
+        <p>
+          Go live date: <small>{goLiveDate.toLocaleString()} </small>
+        </p>
       </Flex>
       <Flex
         sx={{

@@ -25,7 +25,8 @@ import Minter from "./Minter"
  */
 const WalletProviderSection: FC = () => {
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
-  const network = WalletAdapterNetwork.Devnet
+  const network = process.env
+    .NEXT_PUBLIC_CONNECTION_NETWORK as WalletAdapterNetwork
 
   // You can also provide a custom RPC endpoint
   const endpoint = useMemo(() => clusterApiUrl(network), [network])
