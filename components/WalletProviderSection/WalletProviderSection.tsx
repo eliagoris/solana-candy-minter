@@ -1,4 +1,6 @@
+/** @jsxImportSource theme-ui */
 import React, { FC, useMemo } from "react"
+
 import {
   ConnectionProvider,
   WalletProvider,
@@ -11,14 +13,17 @@ import {
   getSolletWallet,
   getTorusWallet,
 } from "@solana/wallet-adapter-wallets"
-import {
-  WalletModalProvider,
-  WalletDisconnectButton,
-  WalletMultiButton,
-} from "@solana/wallet-adapter-react-ui"
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
 import { clusterApiUrl } from "@solana/web3.js"
 
-const Wallet: FC = () => {
+import Minter from "./Minter"
+
+/**
+ * Component that contains the whole minting process
+ * It is necessary to be separate, since it depends on the global window variable
+ * Then the rest of the page can be rendered on server
+ */
+const WalletProviderSection: FC = () => {
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
   const network = WalletAdapterNetwork.Devnet
 
@@ -43,13 +48,12 @@ const Wallet: FC = () => {
   return (
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          <WalletMultiButton />
-          <WalletDisconnectButton />
+        <WalletModalProvider logo="/images/logo.png">
+          <Minter />
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
   )
 }
 
-export default Wallet
+export default WalletProviderSection

@@ -4,6 +4,11 @@ import base from "./preset-base"
 
 const theme: Theme = {
   ...base,
+  colors: {
+    background: "#232323",
+    text: "#fff",
+    primary: "#fff",
+  },
 
   sizes: {
     container: "78rem",
@@ -38,7 +43,17 @@ const theme: Theme = {
         fontSize: "1.5rem",
         lineHeight: 1.45,
       },
+
+      img: {
+        maxWidth: "100%",
+        height: "auto",
+      },
+
+      p: {
+        margin: 0,
+      },
     },
+
     p: {
       margin: 0,
     },
