@@ -20,14 +20,20 @@ const theme: Theme = {
   buttons: {
     primary: {
       color: "background",
-      bg: "primary",
+      backgroundColor: "primary",
       border: "1px solid transparent",
       transition: "all .3s linear",
-      "&:hover": {
+
+      "&:not(:disabled):hover": {
         bg: "background",
         color: "primary",
         borderColor: "primary",
         cursor: "pointer",
+      },
+
+      "&:disabled": {
+        cursor: "not-allowed",
+        opacity: 0.3,
       },
     },
   },

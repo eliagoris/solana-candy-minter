@@ -1,17 +1,18 @@
+/** @jsxImportSource theme-ui */
 import { useWallet } from "@solana/wallet-adapter-react"
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
-import { Button } from "@solana/wallet-adapter-react-ui/lib/Button"
 import React from "react"
-import { Flex } from "theme-ui"
+import { Button, Flex, Spinner, Text } from "theme-ui"
 
 import useCandyMachine from "../../hooks/useCandyMachine"
-import { mintOneToken } from "../../lib/mint-one-token"
+import useMinter from "../../hooks/useMinter"
 
 type Props = {}
 
 const MintButton = (props: Props) => {
   const wallet = useWallet()
   const { candyMachine } = useCandyMachine()
+  const { isLoading, logs, mint, status } = useMinter()
 
   console.log(candyMachine?.data)
 
@@ -30,7 +31,6 @@ const MintButton = (props: Props) => {
         <h2>Mint it</h2>
         <WalletMultiButton />
       </Flex>
-
       <Flex sx={{ flexDirection: "column" }}>
         <p>
           Candy machine address: {process.env.NEXT_PUBLIC_CANDY_MACHINE_ADDRESS}
@@ -40,21 +40,46 @@ const MintButton = (props: Props) => {
         ) : null}
         Go live date: {goLiveDate.toLocaleString()}
       </Flex>
-
       <Flex
         sx={{
+          margin: "3.2rem 0",
+          gap: ".8rem",
           justifyContent: "center",
-          margin: "1.6rem 0",
+          alignItems: "center",
+          flexDirection: "column",
         }}
       >
+        <Flex
+          sx={{
+            alignItems: "center",
+            gap: ".8rem",
+          }}
+        >
+          {isLoading && <Spinner size={16} strokeWidth={2} />}
+          <Text>{status}</Text>
+        </Flex>
         <Button
-          onClick={wallet.publicKey ? () => mintOneToken(wallet) : () => false}
-          disabled={!wallet.publicKey}
+          onClick={wallet.publicKey ? () => mint() : () => false}
+          disabled={!wallet.publicKey || !!isLoading}
+          title="Mint one token"
         >
           {wallet.publicKey
             ? "Mint one token now!"
             : "Connect your wallet first"}
         </Button>
+      </Flex>
+      <Flex
+        sx={{
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {logs.map((log, i) => (
+          <Text className="log" key={i}>
+            <small>info</small>{" "}
+            <Text dangerouslySetInnerHTML={{ __html: log }} />
+          </Text>
+        ))}
       </Flex>
     </div>
   )
