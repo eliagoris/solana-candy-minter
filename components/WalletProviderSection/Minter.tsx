@@ -15,6 +15,10 @@ const MintButton = (props: Props) => {
 
   console.log(candyMachine?.data)
 
+  const goLiveDate = candyMachine?.data.goLiveDate
+    ? new Date(candyMachine?.data.goLiveDate.toNumber() * 1000)
+    : "Not set"
+
   return (
     <div>
       <Flex
@@ -34,7 +38,7 @@ const MintButton = (props: Props) => {
         {wallet.publicKey ? (
           <p>Wallet address: {wallet.publicKey.toString()}</p>
         ) : null}
-        {/* Go live date: {candyMachine?.data.goLiveDate || "Not set"} */}
+        Go live date: {goLiveDate.toLocaleString()}
       </Flex>
 
       <Flex
