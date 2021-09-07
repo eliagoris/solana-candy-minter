@@ -14,8 +14,6 @@ const MintButton = (props: Props) => {
   const { candyMachine } = useCandyMachine()
   const { isLoading, logs, mint, status } = useMinter()
 
-  console.log(candyMachine?.data)
-
   const goLiveDate = candyMachine?.data.goLiveDate
     ? new Date(candyMachine?.data.goLiveDate.toNumber() * 1000)
     : "Not set"
@@ -68,7 +66,7 @@ const MintButton = (props: Props) => {
           }}
         >
           {isLoading && <Spinner size={16} strokeWidth={2} />}
-          <Text>{status}</Text>
+          <Text>{status}&nbsp;</Text>
         </Flex>
         <Button
           onClick={wallet.publicKey ? () => mint() : () => false}
