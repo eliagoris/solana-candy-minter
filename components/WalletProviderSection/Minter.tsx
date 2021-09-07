@@ -34,7 +34,7 @@ const MintButton = (props: Props) => {
         {wallet.publicKey ? (
           <p>Wallet address: {wallet.publicKey.toString()}</p>
         ) : null}
-        Go live date: {candyMachine?.data.goLiveDate || "Not set"}
+        {/* Go live date: {candyMachine?.data.goLiveDate || "Not set"} */}
       </Flex>
 
       <Flex
