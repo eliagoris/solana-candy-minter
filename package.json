@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@project-serum/anchor": "^0.14.0",
+    "@solana/spl-token": "^0.1.8",
     "@solana/wallet-adapter-base": "^0.5.2",
     "@solana/wallet-adapter-react": "^0.9.1",
     "@solana/wallet-adapter-react-ui": "^0.1.0",
     "@solana/wallet-adapter-wallets": "^0.7.5",
+    "@solana/web3.js": "^1.24.2",
     "next": "11.1.2",
     "next-ga": "^2.3.4",
     "next-transpile-modules": "^8.0.0",

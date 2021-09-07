@@ -4,6 +4,8 @@ import { Button } from "@solana/wallet-adapter-react-ui/lib/Button"
 import React from "react"
 import { Flex } from "theme-ui"
 
+import { mintOneToken } from "../../lib/mint-one-token"
+
 type Props = {}
 
 const MintButton = (props: Props) => {
@@ -37,7 +39,10 @@ const MintButton = (props: Props) => {
           margin: "1.6rem 0",
         }}
       >
-        <Button disabled={!wallet.publicKey}>
+        <Button
+          onClick={wallet.publicKey ? () => mintOneToken(wallet) : () => false}
+          disabled={!wallet.publicKey}
+        >
           {wallet.publicKey
             ? "Mint one token now!"
             : "Connect your wallet first"}
