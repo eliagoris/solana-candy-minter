@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { useWallet } from "@solana/wallet-adapter-react"
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
+import { LAMPORTS_PER_SOL } from "@solana/web3.js"
 import React from "react"
 import { Button, Flex, Spinner, Text } from "theme-ui"
 
@@ -77,6 +78,12 @@ const MintButton = (props: Props) => {
             ? "Mint one token now!"
             : "Connect your wallet first"}
         </Button>
+        {candyMachine?.data?.price ? (
+          <small>
+            Mint price:{" "}
+            {candyMachine?.data?.price?.toNumber() / LAMPORTS_PER_SOL} SOL
+          </small>
+        ) : null}
       </Flex>
       <Flex
         sx={{
