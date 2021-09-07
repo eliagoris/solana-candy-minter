@@ -55,7 +55,7 @@ const MintButton = (props: Props) => {
         <br />
         <p>
           Go live date:{" "}
-          <small>{goLiveDate ? goLiveDate.toString() : "Not set"} </small>
+          <small>{goLiveDate ? goLiveDate.toLocaleString() : "Not set"} </small>
         </p>
         <p>
           Countdown:{" "}
