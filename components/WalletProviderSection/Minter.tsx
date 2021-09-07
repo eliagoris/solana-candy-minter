@@ -4,12 +4,16 @@ import { Button } from "@solana/wallet-adapter-react-ui/lib/Button"
 import React from "react"
 import { Flex } from "theme-ui"
 
+import useCandyMachine from "../../hooks/useCandyMachine"
 import { mintOneToken } from "../../lib/mint-one-token"
 
 type Props = {}
 
 const MintButton = (props: Props) => {
   const wallet = useWallet()
+  const { candyMachine } = useCandyMachine()
+
+  console.log(candyMachine?.data)
 
   return (
     <div>
@@ -27,10 +31,10 @@ const MintButton = (props: Props) => {
         <p>
           Candy machine address: {process.env.NEXT_PUBLIC_CANDY_MACHINE_ADDRESS}
         </p>
-
         {wallet.publicKey ? (
           <p>Wallet address: {wallet.publicKey.toString()}</p>
         ) : null}
+        Go live date: {candyMachine?.data.goLiveDate || "Not set"}
       </Flex>
 
       <Flex

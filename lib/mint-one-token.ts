@@ -19,7 +19,7 @@ const TOKEN_METADATA_PROGRAM_ID = new web3.PublicKey(
 
 const CANDY_MACHINE = "candy_machine"
 
-const CANDY_MACHINE_PROGRAM_ID = new web3.PublicKey(
+export const CANDY_MACHINE_PROGRAM_ID = new web3.PublicKey(
   "cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ"
 )
 
@@ -82,7 +82,7 @@ const createAssociatedTokenAccountInstruction = (
   })
 }
 
-const getCandyMachine = async (config: web3.PublicKey, uuid: string) => {
+export const getCandyMachine = async (config: web3.PublicKey, uuid: string) => {
   return await web3.PublicKey.findProgramAddress(
     [Buffer.from(CANDY_MACHINE), config.toBuffer(), Buffer.from(uuid)],
     CANDY_MACHINE_PROGRAM_ID
@@ -127,19 +127,13 @@ export const mintOneToken = async (
   // const solPriceStr = program.getOptionValue('price') || '1';
   // const lamports = parseInt(solPriceStr) * LAMPORTS_PER_SOL;
 
-  const cachedContent = {
-    program: {
-      uuid: "51iccn",
-      config: "51iccnCkmbxe5kmdjrckPCZJnkj8yirVF5KYnuK3yFMv",
-    },
-  }
   const mint = web3.Keypair.generate()
 
   const anchorWallet = {
     publicKey: wallet.publicKey,
     signAllTransactions: wallet.signAllTransactions,
     signTransaction: wallet.signTransaction,
-  } as Wallet
+  }
 
   const token = await getTokenWallet(wallet.publicKey, mint.publicKey)
 
@@ -149,11 +143,14 @@ export const mintOneToken = async (
 
   const idl = await Program.fetchIdl(CANDY_MACHINE_PROGRAM_ID, provider)
   const anchorProgram = new Program(idl, CANDY_MACHINE_PROGRAM_ID, provider)
-  const config = new web3.PublicKey(cachedContent.program.config)
+  const config = new web3.PublicKey(
+    process.env.NEXT_PUBLIC_CANDY_MACHINE_CACHE_PROGRAM_CONFIG
+  )
   const [candyMachine] = await getCandyMachine(
     config,
-    cachedContent.program.uuid
+    process.env.NEXT_PUBLIC_CANDY_MACHINE_CACHE_PROGRAM_UUID
   )
+
   const candy = await anchorProgram.account.candyMachine.fetch(candyMachine)
   const metadata = await getMetadata(mint.publicKey)
   const masterEdition = await getMasterEdition(mint.publicKey)
