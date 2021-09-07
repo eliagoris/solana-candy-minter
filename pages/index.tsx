@@ -1,8 +1,13 @@
 import type { NextPage } from "next"
 import Head from "next/head"
 import { Button, Container } from "theme-ui"
+import dynamic from "next/dynamic"
 
+const Wallet = dynamic(() => import("../components/Wallet"), {
+  ssr: false,
+})
 const Home: NextPage = () => {
+  console.log(process.env.NEXT_PUBLIC_CANDY_MACHINE_ADDRESS)
   return (
     <div>
       <Head>
@@ -16,6 +21,7 @@ const Home: NextPage = () => {
 
       <main>
         <Container>
+          <Wallet />
           <h1>Welcome to Solana Candy Minter</h1>
 
           <p>Click on the button to mint a NFT from a candy machine</p>
