@@ -4,6 +4,7 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
 import { LAMPORTS_PER_SOL } from "@solana/web3.js"
 import React from "react"
 import { Button, Flex, Spinner, Text } from "theme-ui"
+import Countdown from "react-countdown"
 
 import useCandyMachine from "../../hooks/useCandyMachine"
 import useMinter from "../../hooks/useMinter"
@@ -15,9 +16,13 @@ const MintButton = (props: Props) => {
   const { candyMachine } = useCandyMachine()
   const { isLoading, logs, mint, status } = useMinter()
 
+  console.log(candyMachine?.data)
   const goLiveDate = candyMachine?.data.goLiveDate
     ? new Date(candyMachine?.data.goLiveDate.toNumber() * 1000)
-    : "Not set"
+    : null
+
+  const isMintingReady =
+    goLiveDate && goLiveDate.getTime() < new Date().getTime()
 
   return (
     <div>
@@ -47,8 +52,22 @@ const MintButton = (props: Props) => {
             {`https://api.${process.env.NEXT_PUBLIC_CONNECTION_NETWORK}.solana.com/`}
           </small>
         </p>
+        <br />
         <p>
-          Go live date: <small>{goLiveDate.toLocaleString()} </small>
+          Go live date:{" "}
+          <small>{goLiveDate ? goLiveDate.toString() : "Not set"} </small>
+        </p>
+        <p>
+          Countdown:{" "}
+          <small>
+            {goLiveDate && isMintingReady ? (
+              "Minting started already!"
+            ) : goLiveDate ? (
+              <Countdown date={goLiveDate?.getTime()} daysInHours={true} />
+            ) : (
+              "Live date not set"
+            )}
+          </small>
         </p>
       </Flex>
       <Flex

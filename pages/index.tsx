@@ -13,7 +13,11 @@ const WalletProviderSection = dynamic(
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div
+      sx={{
+        padding: "0 1.6rem",
+      }}
+    >
       <Head>
         <title>Solana Candy Minter</title>
         <meta
