@@ -19,11 +19,8 @@ const Home: NextPage = () => {
       }}
     >
       <Head>
-        <title>Solana Candy Minter</title>
-        <meta
-          name="description"
-          content="Mint NFTs from a candy machine on Solana blockchain"
-        />
+        <title>Solsnatchers</title>
+        <meta name="description" content="Solsnatchers NFT minter" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -66,7 +63,7 @@ const Home: NextPage = () => {
               marginBottom: "6.4rem",
             }}
           >
-            <h1>A Mighty Solana NFT Project</h1>
+            <h1>Solsnatchers</h1>
             <p>
               Mint your own unique NFT from our limited collecton now! Also,
               read more about our project <a href="#">here</a>
