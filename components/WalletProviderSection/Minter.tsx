@@ -102,6 +102,17 @@ const MintButton = (props: Props) => {
               : "Sold out!"
             : "Connect your wallet first"}
         </Button>
+        <Button
+          onClick={wallet.publicKey ? () => mint(3) : () => false}
+          disabled={!wallet.publicKey || !!isLoading}
+          title="Mint 3 tokens"
+        >
+          {wallet.publicKey
+            ? itemsRemaining
+              ? "Mint 3 tokens now!"
+              : "Sold out!"
+            : "Connect your wallet first"}
+        </Button>
         {candyMachine?.data?.price ? (
           <small>
             Mint price:{" "}

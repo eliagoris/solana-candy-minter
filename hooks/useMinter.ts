@@ -20,7 +20,7 @@ const useMinter = () => {
     }
   }, [status, setLogs])
 
-  const mint = async () => {
+  const mint = async (quantity = 1) => {
     setIsLoading(true)
     setLogs([])
 
@@ -33,13 +33,14 @@ const useMinter = () => {
       if (walletBalance < mintPrice)
         throw new Error("Insufficient balance on wallet " + wallet.publicKey)
 
-      setStatus("Minting one token...")
-      const result = await mintOneToken(wallet)
-      setStatus("Waiting for transaction to be confirmed...")
+      for (let i = 0; i < quantity; i++) {
+        setStatus("Minting...")
+        const result = await mintOneToken(wallet)
 
-      await connection.confirmTransaction(result)
-
-      setStatus("Tansaction confirmed!")
+        setStatus("Waiting for transaction to be confirmed...")
+        await connection.confirmTransaction(result)
+        setStatus("Tansaction confirmed!")
+      }
 
       setStatus(
         "Success! Your NFT has been minted! Check your wallet collectibles."
