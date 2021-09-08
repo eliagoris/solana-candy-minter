@@ -16,13 +16,16 @@ const MintButton = (props: Props) => {
   const { candyMachine } = useCandyMachine()
   const { isLoading, logs, mint, status } = useMinter()
 
-  console.log(candyMachine?.data)
   const goLiveDate = candyMachine?.data.goLiveDate
     ? new Date(candyMachine?.data.goLiveDate.toNumber() * 1000)
     : null
 
   const isMintingReady =
     goLiveDate && goLiveDate.getTime() < new Date().getTime()
+
+  const itemsRemaining =
+    candyMachine?.data?.itemsAvailable?.toNumber() -
+    candyMachine?.itemsRedeemed?.toNumber()
 
   return (
     <div>
@@ -94,7 +97,9 @@ const MintButton = (props: Props) => {
           title="Mint one token"
         >
           {wallet.publicKey
-            ? "Mint one token now!"
+            ? itemsRemaining
+              ? "Mint one token now!"
+              : "Sold out!"
             : "Connect your wallet first"}
         </Button>
         {candyMachine?.data?.price ? (
@@ -102,6 +107,9 @@ const MintButton = (props: Props) => {
             Mint price:{" "}
             {candyMachine?.data?.price?.toNumber() / LAMPORTS_PER_SOL} SOL
           </small>
+        ) : null}
+        {itemsRemaining ? (
+          <small>{itemsRemaining} mints remaining</small>
         ) : null}
       </Flex>
       <Flex
