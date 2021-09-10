@@ -27,6 +27,10 @@ const MintButton = (props: Props) => {
     candyMachine?.data?.itemsAvailable?.toNumber() -
     candyMachine?.itemsRedeemed?.toNumber()
 
+  const endpoint = process.env.NEXT_PUBLIC_CONNECTION_NETWORK == 'devnet' ? 
+                   process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_DEVNET : 
+                   process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_MAINNET_BETA
+
   return (
     <div>
       <Flex
@@ -51,8 +55,13 @@ const MintButton = (props: Props) => {
         <p>
           Network:{" "}
           <small>
-            {process.env.NEXT_PUBLIC_CONNECTION_NETWORK}&nbsp;
-            {`https://api.${process.env.NEXT_PUBLIC_CONNECTION_NETWORK}.solana.com/`}
+          {process.env.NEXT_PUBLIC_CONNECTION_NETWORK}&nbsp;
+          </small>
+        </p>
+        <p>
+          RPC Endpoint:{" "}
+          <small>
+          {endpoint}
           </small>
         </p>
         <br />

@@ -24,12 +24,13 @@ import Minter from "./Minter"
  * Then the rest of the page can be rendered on server
  */
 const WalletProviderSection: FC = () => {
-  // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
+  
   const network = process.env
     .NEXT_PUBLIC_CONNECTION_NETWORK as WalletAdapterNetwork
 
-  // You can also provide a custom RPC endpoint
-  const endpoint = useMemo(() => clusterApiUrl(network), [network])
+    const endpoint = process.env.NEXT_PUBLIC_CONNECTION_NETWORK == 'devnet' ? 
+                     process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_DEVNET : 
+                     process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_MAINNET_BETA
 
   // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking --
   // Only the wallets you configure here will be compiled into your application
