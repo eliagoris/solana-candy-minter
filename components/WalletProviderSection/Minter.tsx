@@ -27,9 +27,10 @@ const MintButton = (props: Props) => {
     candyMachine?.data?.itemsAvailable?.toNumber() -
     candyMachine?.itemsRedeemed?.toNumber()
 
-  const endpoint = process.env.NEXT_PUBLIC_CONNECTION_NETWORK == 'devnet' ? 
-                   process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_DEVNET : 
-                   process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_MAINNET_BETA
+  const endpoint =
+    process.env.NEXT_PUBLIC_CONNECTION_NETWORK == "devnet"
+      ? process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_DEVNET
+      : process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_MAINNET_BETA
 
   return (
     <div>
@@ -54,15 +55,10 @@ const MintButton = (props: Props) => {
         ) : null}
         <p>
           Network:{" "}
-          <small>
-          {process.env.NEXT_PUBLIC_CONNECTION_NETWORK}&nbsp;
-          </small>
+          <small>{process.env.NEXT_PUBLIC_CONNECTION_NETWORK}&nbsp;</small>
         </p>
         <p>
-          RPC Endpoint:{" "}
-          <small>
-          {endpoint}
-          </small>
+          RPC Endpoint: <small>{endpoint}</small>
         </p>
         <br />
         <p>
@@ -111,17 +107,7 @@ const MintButton = (props: Props) => {
               : "Sold out!"
             : "Connect your wallet first"}
         </Button>
-        <Button
-          onClick={wallet.publicKey ? () => mint(3) : () => false}
-          disabled={!wallet.publicKey || !!isLoading}
-          title="Mint 3 tokens"
-        >
-          {wallet.publicKey
-            ? itemsRemaining
-              ? "Mint 3 tokens now!"
-              : "Sold out!"
-            : "Connect your wallet first"}
-        </Button>
+
         {candyMachine?.data?.price ? (
           <small>
             Mint price:{" "}
