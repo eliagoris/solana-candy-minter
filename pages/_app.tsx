@@ -14,4 +14,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default withGA("UA-206682565-1", Router)(MyApp)
+export default withGA(process.env.NEXT_PUBLIC_GA_ID, Router)(MyApp)

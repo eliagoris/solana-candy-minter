@@ -121,8 +121,12 @@ const getMasterEdition = async (
 export const mintOneToken = async (
   wallet: WalletContextState
 ): Promise<string> => {
-  const ENV = process.env.NEXT_PUBLIC_CONNECTION_NETWORK
-  const solConnection = new web3.Connection(`https://api.${ENV}.solana.com/`)
+
+  const endpoint = process.env.NEXT_PUBLIC_CONNECTION_NETWORK == 'devnet' ? 
+                   process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_DEVNET : 
+                   process.env.NEXT_PUBLIC_SOLANA_RPC_HOST_MAINNET_BETA
+
+  const solConnection = new web3.Connection(endpoint)
 
   // const solPriceStr = program.getOptionValue('price') || '1';
   // const lamports = parseInt(solPriceStr) * LAMPORTS_PER_SOL;
