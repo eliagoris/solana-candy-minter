@@ -5,12 +5,12 @@ import base from "./preset-base"
 const theme: Theme = {
   ...base,
   colors: {
-    background: "#1A1A26",
-    text: "#969AB2",
-    primary: "#DD4043",
+    background: "#39315E",
+    text: "#E4E1EF",
+    primary: "#141221",
     heading: "#fff",
-    background2: "#212334",
-    background3: "#010001",
+    background2: "#4B417C",
+    background3: "#141221",
   },
 
   sizes: {

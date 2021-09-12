@@ -129,8 +129,6 @@ const MintSection = () => {
             )}
           </Text>
         </Flex>
-        <Text>• 1x SolSnatcher ERC-732 NFT</Text>
-        <Text>• Algorithmically generated with over 100 unique attributes</Text>
 
         <Flex
           sx={{
@@ -152,6 +150,11 @@ const MintSection = () => {
               display: "flex",
               flex: 1,
               justifyContent: "center",
+            },
+
+            ".wallet-adapter-button[disabled]": {
+              backgroundColor: "#141221 !important",
+              opacity: 0.7,
             },
           }}
         >
@@ -267,7 +270,7 @@ const MintSection = () => {
 
         <Text variant="small" color="primary">
           {itemsRemaining ? (
-            itemsRemaining + " grim reapers remaining"
+            itemsRemaining + " pieces remaining"
           ) : (
             <Spinner variant="styles.spinnerSmall" />
           )}

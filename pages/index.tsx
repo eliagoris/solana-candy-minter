@@ -19,20 +19,20 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Solsnatchers - Mint Your Own</title>
+        <title>Solana NFT Project - Mint Your Own</title>
         <meta
           name="description"
-          content="Mint NFTs from a candy machine on Solana blockchain"
+          content="A Solana NFT Project's official minting page. Get yourself an unique NFT from our collection now!"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <SectionWrapper backgroundColor="background3" as="header">
-        <Heading as="h1">SolSnatchers</Heading>
+        <Heading as="h1">A Solana NFT Project</Heading>
         <TextWrapper>
           <Text>
-            A collection of 10,000 uniquely generated Grim Reapers existing
-            eternally in the underworld of the Solana blockchain.
+            Our collection is made up of 3,000 unique NFTs, with attributes that
+            defines every one of them an unique piece of art.{" "}
           </Text>
         </TextWrapper>
       </SectionWrapper>
