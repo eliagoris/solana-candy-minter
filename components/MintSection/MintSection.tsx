@@ -45,12 +45,23 @@ const MintSection = () => {
       <Text
         as="p"
         sx={{
+          display: "flex",
+          justifyContent: "center",
           textAlign: "center",
+          alignItems: "center",
         }}
       >
-        Minting coming soon!
+        Go live date:{" "}
+        {goLiveDate ? (
+          goLiveDate?.toLocaleString()
+        ) : (
+          <Spinner
+            sx={{
+              marginLeft: ".8rem",
+            }}
+          />
+        )}
       </Text>
-      {/* <WalletMultiButton /> */}
 
       <Flex
         sx={{
@@ -91,7 +102,9 @@ const MintSection = () => {
           gap: ".8rem",
         }}
       >
-        <Heading as="h3">Single Mint</Heading>
+        <Flex>
+          <Heading as="h3">Single Mint</Heading>
+        </Flex>
 
         <Text>Mint one now!</Text>
         <Flex
@@ -129,17 +142,128 @@ const MintSection = () => {
           <Text>{status}&nbsp;</Text>
         </Flex>
 
-        <Button
-          onClick={wallet.publicKey ? () => mint() : () => false}
-          disabled={!wallet.publicKey || !!isLoading}
-          title="Mint one token!"
+        <Flex
+          sx={{
+            alignSelf: "stretch",
+            justifyContent: "center",
+            alignItems: "center",
+
+            ".wallet-adapter-dropdown": {
+              display: "flex",
+              flex: 1,
+              justifyContent: "center",
+            },
+          }}
         >
-          {wallet.publicKey
-            ? itemsRemaining
-              ? "Mint one!"
-              : "Sold out!"
-            : "Connect your wallet first"}
-        </Button>
+          <Flex
+            sx={{
+              flex: 1,
+              justifyContent: "center",
+            }}
+          >
+            <span
+              sx={{
+                marginRight: "auto",
+              }}
+            >
+              &nbsp;
+            </span>
+          </Flex>
+          {wallet?.publicKey ? (
+            <Button
+              onClick={() => mint()}
+              disabled={!wallet.publicKey || !!isLoading}
+              title="Mint one token!"
+              sx={{
+                alignSelf: "center",
+                padding: ".8rem 6.4rem",
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+              }}
+            >
+              <Text variant="text.heading3">
+                {candyMachine?.data ? (
+                  itemsRemaining ? (
+                    "Mint one!"
+                  ) : (
+                    "Sold out!"
+                  )
+                ) : (
+                  <Spinner
+                    sx={{
+                      color: "background",
+                    }}
+                  />
+                )}
+              </Text>
+            </Button>
+          ) : (
+            <WalletMultiButton
+              sx={{
+                backgroundColor: "background3",
+                border: "1px solid transparent",
+                transition: "all .3s linear",
+                color: "heading",
+                lineHeight: "body",
+                fontSize: "1.7rem",
+                padding: ".8rem 6.4rem",
+                height: "unset",
+                alignSelf: "flex-end",
+
+                "&:hover": {
+                  bg: "background",
+                  color: "primary",
+                  borderColor: "primary",
+                  cursor: "pointer",
+                },
+              }}
+            />
+          )}
+
+          <Flex
+            sx={{
+              flex: 1,
+              justifyContent: "center",
+            }}
+          >
+            {wallet?.publicKey ? (
+              <WalletMultiButton
+                sx={{
+                  backgroundColor: "none",
+                  background: "none",
+                  transition: "all .3s linear",
+                  color: "heading",
+                  lineHeight: "body",
+                  fontSize: "1.1rem",
+                  padding: "0",
+                  height: "unset",
+                  alignSelf: "flex-end",
+                  marginLeft: "auto",
+
+                  "&:hover": {
+                    background: "none!important",
+                    backgroundColor: "none!important",
+                    color: "primary",
+                    borderColor: "primary",
+                    cursor: "pointer",
+                  },
+                }}
+                startIcon={null}
+              >
+                my wallet
+              </WalletMultiButton>
+            ) : (
+              <span
+                sx={{
+                  marginLeft: "auto",
+                }}
+              >
+                &nbsp;
+              </span>
+            )}
+          </Flex>
+        </Flex>
 
         <Text variant="small" color="primary">
           {itemsRemaining ? (
