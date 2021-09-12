@@ -5,13 +5,16 @@ import base from "./preset-base"
 const theme: Theme = {
   ...base,
   colors: {
-    background: "#232323",
-    text: "#fff",
-    primary: "#fff",
+    background: "#1A1A26",
+    text: "#969AB2",
+    primary: "#DD4043",
+    heading: "#fff",
+    background2: "#212334",
+    background3: "#010001",
   },
 
   sizes: {
-    container: "78rem",
+    container: "64rem",
   },
   config: {
     useLocalStorage: true,
@@ -38,6 +41,36 @@ const theme: Theme = {
     },
   },
 
+  lineHeights: { body: 1.45 },
+
+  text: {
+    heading: {
+      color: "heading",
+      lineHeight: "body",
+      fontSize: "2.2rem",
+    },
+    heading2: {
+      color: "heading",
+      lineHeight: "body",
+      fontSize: "1.9rem",
+    },
+    heading3: {
+      color: "heading",
+      lineHeight: "body",
+      fontSize: "1.7rem",
+    },
+    base: {
+      color: "text",
+      lineHeight: "body",
+      fontSize: "1.4rem",
+    },
+    small: {
+      color: "text",
+      lineHeight: "body",
+      fontSize: "1.2rem",
+    },
+  },
+
   styles: {
     ...base.styles,
 
@@ -46,8 +79,10 @@ const theme: Theme = {
       fontSize: "62.5%",
 
       body: {
-        fontSize: "1.5rem",
+        /** Default text styles */
+        fontSize: "1.4rem",
         lineHeight: 1.45,
+        color: "text",
       },
 
       img: {
@@ -58,10 +93,6 @@ const theme: Theme = {
       p: {
         margin: 0,
       },
-    },
-
-    p: {
-      margin: 0,
     },
   },
 }
