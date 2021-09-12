@@ -1,18 +1,30 @@
 import React from "react"
 import { Container, Flex } from "theme-ui"
 
-const SectionWrapper = ({ as = null, className = "", children }) => {
+const SectionWrapper = ({
+  as = null,
+  backgroundColor = "background",
+  className = "",
+  children,
+}) => {
   return (
     <Flex
-      className={className}
-      as={as}
       sx={{
-        gap: "1.6rem",
         padding: "3.2rem 0",
-        flexDirection: "column",
+        backgroundColor,
       }}
     >
-      <Container>{children}</Container>
+      <Container
+        className={className}
+        sx={{
+          display: "flex",
+          gap: "1.6rem",
+          flexDirection: "column",
+        }}
+        as={as}
+      >
+        {children}
+      </Container>
     </Flex>
   )
 }

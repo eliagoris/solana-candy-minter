@@ -85,6 +85,10 @@ const theme: Theme = {
         color: "text",
       },
 
+      svg: {
+        size: "1.4rem!important",
+      },
+
       img: {
         maxWidth: "100%",
         height: "auto",
@@ -93,6 +97,10 @@ const theme: Theme = {
       p: {
         margin: 0,
       },
+    },
+
+    spinnerSmall: {
+      size: "1.2rem!important",
     },
   },
 }

@@ -27,26 +27,19 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <SectionWrapper
-          sx={{
-            backgroundColor: "background3",
-          }}
-          as="header"
-        >
-          <Heading as="h1">SolSnatchers</Heading>
-          <TextWrapper>
-            <Text>
-              A collection of 10,000 uniquely generated Grim Reapers existing
-              eternally in the underworld of the Solana blockchain.
-            </Text>
-          </TextWrapper>
-        </SectionWrapper>
+      <SectionWrapper backgroundColor="background3" as="header">
+        <Heading as="h1">SolSnatchers</Heading>
+        <TextWrapper>
+          <Text>
+            A collection of 10,000 uniquely generated Grim Reapers existing
+            eternally in the underworld of the Solana blockchain.
+          </Text>
+        </TextWrapper>
+      </SectionWrapper>
 
-        <WalletProvider>
-          <MintSection />
-        </WalletProvider>
-      </main>
+      <WalletProvider>
+        <MintSection />
+      </WalletProvider>
     </div>
   )
 }
