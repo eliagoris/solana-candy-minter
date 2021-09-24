@@ -8,20 +8,26 @@ Web application to mint tokens from a pre-generated Metaplex candy machine
 
 2. With the candy machine created, you should grab its address.
 
-3. Update the .env file with the following info:
+3. Create an `env.local` file with the following content (or copy from `.env.template`):
 
 ```bash
+
 # this is the address which is logged when you create the candy machine
-NEXT_PUBLIC_CANDY_MACHINE_ADDRESS=your_candy_machine_address_here
+NEXT_PUBLIC_CANDY_MACHINE_ADDRESS=
 
-# this is inside the file on .cache/ folder
-NEXT_PUBLIC_CANDY_MACHINE_CACHE_PROGRAM_UUID=your_candy_machine_uuid_here
+# these are inside the cache file on metaplex .cache/ folder
+NEXT_PUBLIC_CANDY_MACHINE_CACHE_PROGRAM_UUID=
+NEXT_PUBLIC_CANDY_MACHINE_CACHE_PROGRAM_CONFIG=
 
-# this is inside the file on .cache/ folder
-NEXT_PUBLIC_CANDY_MACHINE_CACHE_PROGRAM_CONFIG=your_candy_machine_config_address_here
+# connection type - options are devnet and mainnet-beta
+NEXT_PUBLIC_CONNECTION_NETWORK=
 
-# connection network
-NEXT_PUBLIC_CONNECTION_NETWORK=devnet
+# rpc http endpoints (ex: https://api.devnet.solana.com)
+NEXT_PUBLIC_SOLANA_RPC_HOST_DEVNET=
+NEXT_PUBLIC_SOLANA_RPC_HOST_MAINNET_BETA=
+
+# analytics tracking code
+NEXT_PUBLIC_GA_ID=
 ```
 
 4. Deploy the application.

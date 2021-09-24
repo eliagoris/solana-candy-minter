@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "author": {
+    "name": "ed",
+    "url": "https://edagonis.now.sh"
+  },
   "dependencies": {
     "@project-serum/anchor": "^0.14.0",
     "@solana/spl-token": "^0.1.8",
