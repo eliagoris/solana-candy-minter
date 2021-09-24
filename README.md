@@ -8,7 +8,9 @@ Web application to mint tokens from a pre-generated Metaplex candy machine
 
 2. With the candy machine created, you should grab its address.
 
-3. Create an `env.local` file with the following content (or copy from `.env.template`):
+3. Create an `env.local` file with the following content (or copy from `.env.template`).
+
+- This should also be added to your production deployment's environment variables:
 
 ```bash
 
@@ -44,7 +46,9 @@ NEXT_PUBLIC_GA_ID=
 yarn
 ```
 
-2. Run the development server:
+2. Add environment variables to `.env.local`.
+
+3. Run the development server:
 
 ```bash
 npm run dev
