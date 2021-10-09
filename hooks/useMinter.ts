@@ -94,7 +94,6 @@ const useMinter = () => {
       return true
     } catch (error) {
       setStatus(error + "")
-      setIsMintLoading(false)
       console.log(error)
     }
   }
