@@ -1,16 +1,18 @@
-# solana-candies
+# solana-candy-minter
 
 Web application to mint tokens from a pre-generated Metaplex candy machine
 
 ## setup steps
 
-1. Follow [these instructions](https://threadreaderapp.com/thread/1433816437525659658.html) until step 9.
+1. Setup a [Metaplex candy machine](https://github.com/metaplex-foundation/metaplex/tree/master/js/packages/cli)
 
-2. With the candy machine created, you should grab its address.
+- Following [these instructions](https://threadreaderapp.com/thread/1433816437525659658.html) until step 9 may help.
 
-3. Create an `env.local` file with the following content (or copy from `.env.template`).
+2. With the candy machine created, you should grab its address and also config address.
 
-- This should also be added to your production deployment's environment variables:
+3. Create an `env.local` file with the following content (or copy from `.env.template`):
+
+- (This should also be added to your production deployment's environment variables)
 
 ```bash
 

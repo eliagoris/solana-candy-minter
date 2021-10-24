@@ -1,5 +1,5 @@
 {
-  "name": "solana-candies",
+  "name": "solana-candy-minter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "author": {
     "name": "ed",
-    "url": "https://edagonis.now.sh"
+    "email": "eduardofidera@gmail.com"
   },
   "dependencies": {
     "@project-serum/anchor": "^0.14.0",
