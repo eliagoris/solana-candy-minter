@@ -2,21 +2,27 @@
 
 Web application to mint tokens from a Metaplex candy machine
 
+## prerequisites
+
+- NodeJS - install through [NVM](https://github.com/nvm-sh/nvm)
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
+
+
 ## setup steps
 
 1. Setup a [Metaplex candy machine](https://github.com/metaplex-foundation/metaplex/tree/master/js/packages/cli)
 
 - Following [these instructions](https://threadreaderapp.com/thread/1433816437525659658.html) until step 9 may help.
 
-2. With the candy machine created, you should grab its address and also config address.
+2. With the candy machine created, you should grab its address and also the config address.
 
-3. Create an `env.local` file with the following content (or copy from `.env.template`):
+3. Deploy the application. The suggested platform is [Vercel](https://vercel.com/new)
 
-- (This should also be added to your production deployment's environment variables)
+4. These variables have to be added to your production deployment environment variables:
 
 ```bash
 
-# this is the address which is logged when you create the candy machine
+# this is the address that is logged when you create the candy machine
 NEXT_PUBLIC_CANDY_MACHINE_ADDRESS=
 
 # these are inside the cache file on metaplex .cache/ folder
@@ -34,11 +40,11 @@ NEXT_PUBLIC_SOLANA_RPC_HOST_MAINNET_BETA=
 NEXT_PUBLIC_GA_ID=
 ```
 
-4. Deploy the application.
+5. Test out your minting process. If you followed the steps correctly, you should be able to mint tokens.
 
-5. Test out your minting proccess. If you followed the steps correctly, you should be able to mint tokens
+6. Change the `styles/theme.ts` file to easily match your own design.
 
-6. Spread the word and have success with your project =)
+7. Spread the word and have success with your project =)
 
 ## development steps
 
@@ -48,7 +54,7 @@ NEXT_PUBLIC_GA_ID=
 yarn
 ```
 
-2. Add environment variables to `.env.local`.
+2. Add environment variables to `.env.local`. (copy from `.env.template`)
 
 3. Run the development server:
 
