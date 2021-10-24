@@ -1,6 +1,6 @@
 # solana-candy-minter
 
-Web application to mint tokens from a pre-generated Metaplex candy machine
+Web application to mint tokens from a Metaplex candy machine
 
 ## setup steps
 
